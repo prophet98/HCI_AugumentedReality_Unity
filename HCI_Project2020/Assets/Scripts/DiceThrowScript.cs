@@ -26,16 +26,16 @@ public class DiceThrowScript : MonoBehaviour
             rbList[i].isKinematic = false;
             rbList[i].useGravity = true;
             rbList[i].AddForce(throwDirectionDice * throwForceDice);
-            rbList[i].AddTorque(Random.Range(100f, 400f), Random.Range(100f, 400f), Random.Range(100f, 400f));
+            //rbList[i].AddTorque(Random.Range(100f, 400f), Random.Range(100f, 400f), Random.Range(100f, 400f));
         }
         
     }
     public void PosReset()
     {
         //yield return new WaitForSeconds(4f);
-        Dices3D[0].transform.localPosition = new Vector3(-.2f, 0, 0);
+        Dices3D[0].transform.localPosition = new Vector3(-10f, 0, 0);
         Dices3D[1].transform.localPosition = new Vector3(0, 0, 0);
-        Dices3D[2].transform.localPosition = new Vector3(.2f, 0, 0);
+        Dices3D[2].transform.localPosition = new Vector3(10f, 0, 0);
         for (int i = 0; i < Dices3D.Count; i++)
         {
             rbList.Add(Dices3D[i].GetComponent<Rigidbody>());
