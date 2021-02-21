@@ -1,36 +1,37 @@
-﻿using System.Collections;
+﻿
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DiceThrowScript : MonoBehaviour
 {
-    [SerializeField] List<GameObject> dices3D;
-    public List<GameObject> Dices3D { get => dices3D; set => dices3D = value; }
-    readonly List<Rigidbody> rbList = new List<Rigidbody>();
-    Vector3 throwDirectionDice;
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private List<GameObject> dices3D;
+    private List<GameObject> Dices3D => dices3D;
+    private readonly List<Rigidbody> _rbList = new List<Rigidbody>();
+
+    private Vector3 _throwDirectionDice;
+    
+    public void Enabled() //Used by Vuforia
     {
         PosReset();
     }
 
     private void DiceThrow()
     {
-        float throwForceDice = 50f;
+        const float throwForceDice = 50f;
 
         for (int i = 0; i < Dices3D.Count; i++)
         {
-            throwDirectionDice = -GetComponent<Transform>().up;
+            _throwDirectionDice = -GetComponent<Transform>().up;
 
             Dices3D[i].GetComponent<MeshRenderer>().enabled = true;
-            rbList[i].isKinematic = false;
-            rbList[i].useGravity = true;
-            rbList[i].AddForce(throwDirectionDice * throwForceDice);
+            _rbList[i].isKinematic = false;
+            _rbList[i].useGravity = true;
+            _rbList[i].AddForce(_throwDirectionDice * throwForceDice);
             //rbList[i].AddTorque(Random.Range(100f, 400f), Random.Range(100f, 400f), Random.Range(100f, 400f));
         }
-        
     }
-    public void PosReset()
+
+    private void PosReset()
     {
         //yield return new WaitForSeconds(4f);
         Dices3D[0].transform.localPosition = new Vector3(-10f, 0, 0);
@@ -38,9 +39,9 @@ public class DiceThrowScript : MonoBehaviour
         Dices3D[2].transform.localPosition = new Vector3(10f, 0, 0);
         for (int i = 0; i < Dices3D.Count; i++)
         {
-            rbList.Add(Dices3D[i].GetComponent<Rigidbody>());
-            rbList[i].isKinematic = true;
-            rbList[i].useGravity = false;
+            _rbList.Add(Dices3D[i].GetComponent<Rigidbody>());
+            _rbList[i].isKinematic = true;
+            _rbList[i].useGravity = false;
             Dices3D[i].GetComponent<MeshRenderer>().enabled = false;
             Dices3D[i].transform.rotation = Quaternion.identity;
             Dices3D[i].transform.localRotation = Quaternion.Euler(Random.Range(0, 180), Random.Range(0, 180), Random.Range(0, 180));
@@ -48,8 +49,7 @@ public class DiceThrowScript : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -59,7 +59,6 @@ public class DiceThrowScript : MonoBehaviour
         {
             PosReset();
         }
-        
     }
 
 }
