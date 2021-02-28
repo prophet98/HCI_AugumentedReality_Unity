@@ -15,8 +15,9 @@ public class DiceThrowScript : MonoBehaviour
         PosReset();
     }
 
-    private void DiceThrow()
+    public void DiceThrow()
     {
+        if (!_canThrow) return;
         const float throwForceDice = 75f;
 
         for (int i = 0; i < Dices3D.Count; i++)
@@ -35,6 +36,7 @@ public class DiceThrowScript : MonoBehaviour
         }
 
         _canThrow = false;
+
     }
 
     private void PosReset()
@@ -55,21 +57,6 @@ public class DiceThrowScript : MonoBehaviour
             Dices3D[i].transform.localRotation = Quaternion.Euler(Random.Range(0, 180), Random.Range(0, 180), Random.Range(0, 180));
         }
 
-    }
-
-    private void LateUpdate()
-    {
-        if (_canThrow)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                DiceThrow();
-            }
-        }
-        else if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            PosReset();
-        }
     }
 
 }
