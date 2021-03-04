@@ -11,7 +11,7 @@ public class CheckObjDistance : MonoBehaviour
         InvokeRepeating(nameof(CheckDistance),.5f,.5f);
     }
 
-    private void CheckDistance()
+    public void CheckDistance()
     {
         if (other.GetComponent<MeshRenderer>().enabled == false) return;
         var dist = Vector3.Distance(other.position, transform.position);
