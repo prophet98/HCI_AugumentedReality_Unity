@@ -76,7 +76,7 @@ public class DiceThrowScript : MonoBehaviour
             _rbList[i].isKinematic = false;
             _rbList[i].useGravity = true;
             _rbList[i].AddForce(_throwDirectionDice * throwForceDice);
-            _rbList[i].AddTorque(Random.Range(20f, 40f), Random.Range(20f, 40f), Random.Range(20f, 40f));
+            _rbList[i].AddTorque(Random.Range(200f, 400f), Random.Range(200f, 400f), Random.Range(200f, 400f));
         }
 
         StartCoroutine(tableDiceEvaluator.CheckDiceValue());

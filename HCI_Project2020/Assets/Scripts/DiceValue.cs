@@ -44,7 +44,7 @@ public class DiceValue : MonoBehaviour
                 break;
         }
 
-        Debug.Log("The dice made the value: " + diceValue);
+        Debug.Log($"The {this.transform.parent.parent.name} made the value: {diceValue}");
         return diceValue;
     }
 }
