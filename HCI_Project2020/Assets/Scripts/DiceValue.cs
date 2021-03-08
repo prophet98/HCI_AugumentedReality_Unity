@@ -4,16 +4,10 @@ using UnityEngine;
 
 public class DiceValue : MonoBehaviour
 {
-    private DiceThrowScript _diceThrowScript;
-    
-    private void Start()
-    {
-        _diceThrowScript = GetComponentInParent<DiceThrowScript>();
-    }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (_diceThrowScript.areDicesStill && other.name == "Table")
+        if (DiceThrowScript.AreDicesStill && other.name == "Table")
         {
             IntValueToDice(Convert.ToInt32(gameObject.name));
         }
@@ -44,7 +38,11 @@ public class DiceValue : MonoBehaviour
                 break;
         }
 
-        Debug.Log($"The {this.transform.parent.parent.name} made the value: {diceValue}");
+        var parentObj = transform.parent.parent;
+        Debug.Log($"The {parentObj.name} made the value: {diceValue}");
+        
+        DiceThrowScript.DiceResults.Add(parentObj.name,diceValue);
+        
         return diceValue;
     }
 }

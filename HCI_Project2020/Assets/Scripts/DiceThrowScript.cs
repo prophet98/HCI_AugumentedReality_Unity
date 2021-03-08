@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -15,9 +16,10 @@ public class DiceThrowScript : MonoBehaviour
     private bool _canThrow;
     
     [SerializeField] private TableDiceEvaluator tableDiceEvaluator;
-    [HideInInspector] public bool areDicesStill;
     [SerializeField] private List<GameObject> dices3D;
 
+    public static bool AreDicesStill;
+    public static Dictionary<string, int> DiceResults = new Dictionary<string, int>();
     public bool normalThrow;
 
     public void Enabled() //Used by Vuforia
@@ -62,6 +64,7 @@ public class DiceThrowScript : MonoBehaviour
     public void DiceThrow()
     {
         if (!_canThrow) return;
+        DiceResults.Clear();
         const float throwForceDice = 75f;
 
         for (int i = 0; i < Dices3D.Count; i++)

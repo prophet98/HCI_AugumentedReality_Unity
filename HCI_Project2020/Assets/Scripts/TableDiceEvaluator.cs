@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class TableDiceEvaluator : MonoBehaviour
 {
-    [SerializeField] DiceThrowScript diceThrowScript;
+    [SerializeField] private DiceThrowScript diceThrowScript;
     private void OnEnable()
     {
-        diceThrowScript.areDicesStill = false;
+        DiceThrowScript.AreDicesStill = false;
     }
 
     private void OnDisable()
@@ -22,7 +22,7 @@ public class TableDiceEvaluator : MonoBehaviour
         {
             yield return null;
         }
-        diceThrowScript.areDicesStill = true;
+        DiceThrowScript.AreDicesStill = true;
     }
 
 

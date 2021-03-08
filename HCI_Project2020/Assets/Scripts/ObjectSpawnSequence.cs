@@ -19,7 +19,6 @@ public class ObjectSpawnSequence : MonoBehaviour
 
     public void OnTrackFoundAnimation()
     {
-        Debug.Log("Found");
         _objTransform.localScale = _startingScale;
         
         _mySpawnTween = transform.DOScale(_endingScale, 3f);
@@ -33,7 +32,6 @@ public class ObjectSpawnSequence : MonoBehaviour
             transform.localScale = _startingScale;
             _objTransform.localScale = _startingScale;  
         }
-        Debug.Log("Lost");
-        
+
     }
 }

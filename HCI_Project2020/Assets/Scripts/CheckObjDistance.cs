@@ -14,8 +14,10 @@ public class CheckObjDistance : MonoBehaviour
     public void CheckDistance()
     {
         if (other.GetComponent<MeshRenderer>().enabled == false) return;
+        
         var dist = Vector3.Distance(other.position, transform.position);
-        print($"Distance to other: {dist}");
+        var totalCost = Convert.ToDouble(String.Format("{0:0.00}", dist));
+        print($"Distance to other: {totalCost}");
     }
 
     private void OnDisable()
