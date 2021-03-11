@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class DiceValue : MonoBehaviour
 {
-
+    public delegate void DiceResult();
+    public static event DiceResult onDiceResult;
     private void OnTriggerEnter(Collider other)
     {
         if (DiceThrowScript.AreDicesStill && other.name == "Table")
@@ -40,9 +41,9 @@ public class DiceValue : MonoBehaviour
 
         var parentObj = transform.parent.parent;
         Debug.Log($"The {parentObj.name} made the value: {diceValue}");
-        
-        DiceThrowScript.DiceResults.Add(parentObj.name,diceValue);
-        
+        onDiceResult?.Invoke();
         return diceValue;
     }
+
+    
 }

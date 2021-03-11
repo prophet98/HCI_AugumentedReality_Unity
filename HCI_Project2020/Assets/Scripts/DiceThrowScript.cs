@@ -19,8 +19,8 @@ public class DiceThrowScript : MonoBehaviour
     [SerializeField] private List<GameObject> dices3D;
 
     public static bool AreDicesStill;
-    public static Dictionary<string, int> DiceResults = new Dictionary<string, int>();
-    public bool normalThrow;
+    public static bool NormalThrow;
+    
 
     public void Enabled() //Used by Vuforia
     {
@@ -30,7 +30,7 @@ public class DiceThrowScript : MonoBehaviour
         }
         dices3D.Clear();
         //add check for single or double dice
-        if (normalThrow)
+        if (NormalThrow)
         {
             dices3D.Add(GetComponentInChildren<BoxCollider>(true).gameObject);
         }
@@ -64,9 +64,9 @@ public class DiceThrowScript : MonoBehaviour
     public void DiceThrow()
     {
         if (!_canThrow) return;
-        DiceResults.Clear();
+        if (GameController.Instance.gameState == GameController.GameState.WaitForDiceResult) return;
         const float throwForceDice = 75f;
-
+        Debug.Log("VAR");
         for (int i = 0; i < Dices3D.Count; i++)
         {
             _throwDirectionDice = GetComponentInParent<Transform>().forward;
@@ -114,7 +114,5 @@ public class DiceThrowScript : MonoBehaviour
             dices3D[i].SetActive(false);
         }
     }
-
-
     
 }
