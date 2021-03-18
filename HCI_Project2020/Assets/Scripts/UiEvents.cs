@@ -22,10 +22,16 @@ public class UiEvents : MonoBehaviour
 
     private void OnDoubleDiceResult()
     {
-        if (DiceThrowScript.NormalThrow == false)
+        
+        if (DiceThrowScript.NormalThrow == false && DiceThrowScript.DiceResults.Count>1)
         {
             doubleDiceText.text = "NOW LOOK AT THE TWO MARKERS AND COMBINE THEM TOGETHER";
             doubleDiceText.gameObject.SetActive(true);
+            Debug.Log("Dices made the values " + DiceThrowScript.DiceResults[0] + " " + DiceThrowScript.DiceResults[1]);
+            //TESTING SPAWN.
+            GameController.Instance.SpawnObjByIndex(1, GameController.SpawnedObjPool.Boy);
+            GameController.Instance.SpawnObjByIndex(2, GameController.SpawnedObjPool.Girl);
+            DiceThrowScript.DiceResults.Clear();
             GameController.Instance.gameState = GameController.GameState.WaitForDiceResult;
         }
     }

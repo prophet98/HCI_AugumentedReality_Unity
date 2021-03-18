@@ -14,7 +14,7 @@ public class DiceValue : MonoBehaviour
         }
     }
     
-    private int IntValueToDice(int diceColliderValue)
+    private void IntValueToDice(int diceColliderValue)
     {
         int diceValue = 0;
         switch (diceColliderValue)
@@ -41,8 +41,8 @@ public class DiceValue : MonoBehaviour
 
         var parentObj = transform.parent.parent;
         Debug.Log($"The {parentObj.name} made the value: {diceValue}");
+        DiceThrowScript.DiceResults.Add(diceValue);
         onDiceResult?.Invoke();
-        return diceValue;
     }
 
     

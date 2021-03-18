@@ -20,7 +20,8 @@ public class DiceThrowScript : MonoBehaviour
 
     public static bool AreDicesStill;
     public static bool NormalThrow;
-    
+
+    public static List<int> DiceResults = new List<int>();
 
     public void Enabled() //Used by Vuforia
     {
@@ -66,7 +67,6 @@ public class DiceThrowScript : MonoBehaviour
         if (!_canThrow) return;
         if (GameController.Instance.gameState == GameController.GameState.WaitForDiceResult) return;
         const float throwForceDice = 75f;
-        Debug.Log("VAR");
         for (int i = 0; i < Dices3D.Count; i++)
         {
             _throwDirectionDice = GetComponentInParent<Transform>().forward;

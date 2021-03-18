@@ -2,6 +2,7 @@
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
+using Vuforia;
 
 public class ObjectSpawnSequence : MonoBehaviour
 {
@@ -11,11 +12,10 @@ public class ObjectSpawnSequence : MonoBehaviour
     private Tween _mySpawnTween = null;
     private MeshRenderer _meshRenderer;
 
-    private void Awake()
+    private void OnEnable()
     {
-        _meshRenderer = GetComponent<MeshRenderer>();
+        _meshRenderer = GetComponentInChildren<MeshRenderer>();
     }
-
     private void Start()
     {
         _objTransform = transform;
@@ -29,24 +29,6 @@ public class ObjectSpawnSequence : MonoBehaviour
         _objTransform.localScale = _startingScale;
         _mySpawnTween = transform.DOScale(_endingScale, 3f);
     }
-
-    private void CheckGameState()
-    {
-        if (GameController.Instance.gameState == GameController.GameState.ThrowDices)
-        {
-            _meshRenderer.enabled = false;
-        }
-        else if (GameController.Instance.gameState == GameController.GameState.ThrowSingleDice)
-        {
-            _meshRenderer.enabled = false;
-        }
-    
-        else
-        {
-            _meshRenderer.enabled = true;
-        }
-    }
-
     public void OnTrackLostAnimation()
     {
         CheckGameState();
@@ -56,6 +38,25 @@ public class ObjectSpawnSequence : MonoBehaviour
             transform.localScale = _startingScale;
             _objTransform.localScale = _startingScale;  
         }
-
     }
+    private void CheckGameState()
+    {
+        if (_meshRenderer!=null)
+        {
+            if (GameController.Instance.gameState == GameController.GameState.ThrowDices)
+            {
+                _meshRenderer.enabled = false;
+            }
+            else if (GameController.Instance.gameState == GameController.GameState.ThrowSingleDice)
+            {
+                _meshRenderer.enabled = false;
+            }
+            else
+            {
+                _meshRenderer.enabled = true;
+            }
+        }
+        
+    }
+    
 }

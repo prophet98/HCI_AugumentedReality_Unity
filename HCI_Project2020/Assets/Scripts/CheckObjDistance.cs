@@ -8,14 +8,14 @@ public class CheckObjDistance : MonoBehaviour
 
     public delegate void DistanceAction();
     public static event DistanceAction onCloseObj;
-    private void OnEnable()
+    private void Start()
     {
         InvokeRepeating(nameof(CheckDistance),.5f,.5f);
     }
 
     public void CheckDistance()
     {
-        if (other.GetComponent<MeshRenderer>().enabled == false) return;
+        if (other.GetComponentInChildren<MeshRenderer>() == null || other.GetComponentInChildren<MeshRenderer>().enabled == false ) return;
         var dist = Vector3.Distance(other.position, transform.position);
         var formattedDistance = Convert.ToDouble(String.Format("{0:0.00}", dist));
         
@@ -24,11 +24,5 @@ public class CheckObjDistance : MonoBehaviour
             onCloseObj?.Invoke();
         }
         print($"Distance to other: {formattedDistance}");
-        
-    }
-
-    private void OnDisable()
-    {
-        CancelInvoke();
     }
 }
