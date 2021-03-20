@@ -8,7 +8,7 @@ public class DiceValue : MonoBehaviour
     public static event DiceResult onDiceResult;
     private void OnTriggerEnter(Collider other)
     {
-        if (DiceThrowScript.AreDicesStill && other.name == "Table")
+        if (DiceThrowScript.areDicesStill && other.name == "Table")
         {
             IntValueToDice(Convert.ToInt32(gameObject.name));
         }
@@ -41,7 +41,20 @@ public class DiceValue : MonoBehaviour
 
         var parentObj = transform.parent.parent;
         Debug.Log($"The {parentObj.name} made the value: {diceValue}");
-        DiceThrowScript.DiceResults.Add(diceValue);
+        
+        if (parentObj.name == "Dice01")
+        {
+            DiceThrowScript.DiceResults[0] = diceValue;
+        }
+        else if (parentObj.name == "Dice02")
+        {
+            DiceThrowScript.DiceResults[1] = diceValue;
+        }
+        else
+        {
+            DiceThrowScript.DiceResults[2] = diceValue;
+        }
+        
         onDiceResult?.Invoke();
     }
 
