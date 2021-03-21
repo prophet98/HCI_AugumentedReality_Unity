@@ -37,8 +37,8 @@ public class UiEvents : MonoBehaviour
             uiText.gameObject.SetActive(true);
             Debug.Log("Dices made the values " + DiceThrowScript.DiceResults[0] + " " + DiceThrowScript.DiceResults[1]);
             //TESTING SPAWN.
-            GameController.Instance.SpawnObjByIndex(GameController.Tracker.First, GameController.SpawnedObjPool.Boy);
-            GameController.Instance.SpawnObjByIndex(GameController.Tracker.Second, GameController.SpawnedObjPool.Girl);
+            GameController.Instance.SpawnObjByIndex(GameController.Tracker.First, GameController.SpawnedObjPool.Glasses);
+            GameController.Instance.SpawnObjByIndex(GameController.Tracker.Second, GameController.SpawnedObjPool.Jewels);
             GameController.Instance.gameState = GameController.GameState.WaitForDiceResult;
         }
     }

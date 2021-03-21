@@ -27,6 +27,7 @@ public class GameController : MonoBehaviour
         Glasses,
         Boy,
         Girl,
+        Jewels,
     }
     
     public enum Tracker
@@ -69,13 +70,16 @@ public class GameController : MonoBehaviour
                 case SpawnedObjPool.Default:
                     break;
                 case SpawnedObjPool.Glasses:
-                    break;
-                case SpawnedObjPool.Boy:
-                    obj = Instantiate(zephyrElements[1].gameObject, _firstTrackerSpawnPos.position, Quaternion.identity);
+                    obj = Instantiate(zephyrElements[0].gameObject, _firstTrackerSpawnPos.position, Quaternion.identity);
                     obj.transform.SetParent(_firstTrackerSpawnPos);
                     break;
+                case SpawnedObjPool.Boy:
+                    
+                    break;
                 case SpawnedObjPool.Girl:
-                    obj = Instantiate(zephyrElements[2].gameObject, _firstTrackerSpawnPos.position, Quaternion.identity);
+                    break;
+                case SpawnedObjPool.Jewels:
+                    obj = Instantiate(zephyrElements[3].gameObject, _secondTrackerSpawnPos.position, Quaternion.identity);
                     obj.transform.SetParent(_firstTrackerSpawnPos);
                     break;
             }
@@ -87,13 +91,16 @@ public class GameController : MonoBehaviour
                 case SpawnedObjPool.Default:
                     break;
                 case SpawnedObjPool.Glasses:
-                    break;
-                case SpawnedObjPool.Boy:
-                    obj = Instantiate(zephyrElements[1].gameObject, _secondTrackerSpawnPos.position, Quaternion.identity);
+                    obj = Instantiate(zephyrElements[0].gameObject, _firstTrackerSpawnPos.position, Quaternion.identity);
                     obj.transform.SetParent(_secondTrackerSpawnPos);
                     break;
+                case SpawnedObjPool.Boy:
+                    
+                    break;
                 case SpawnedObjPool.Girl:
-                    obj = Instantiate(zephyrElements[2].gameObject, _secondTrackerSpawnPos.position, Quaternion.identity);
+                    break;
+                case SpawnedObjPool.Jewels:
+                    obj = Instantiate(zephyrElements[3].gameObject, _secondTrackerSpawnPos.position, Quaternion.identity);
                     obj.transform.SetParent(_secondTrackerSpawnPos);
                     break;
             }
