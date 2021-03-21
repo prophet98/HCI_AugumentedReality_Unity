@@ -15,8 +15,8 @@ public class DiceThrowScript : MonoBehaviour
     [SerializeField] private TableDiceEvaluator tableDiceEvaluator;
     [SerializeField] private List<GameObject> dices3D;
 
-    public static bool areDicesStill;
-    public static bool normalThrow;
+    public static bool areDicesStill = false;
+    public static bool normalThrow = false;
     private bool _canThrow;
 
     public static int[] DiceResults = {0, 0, 0};
@@ -68,7 +68,7 @@ public class DiceThrowScript : MonoBehaviour
     {
         if (!_canThrow) return;
         if (GameController.Instance.gameState == GameController.GameState.WaitForDiceResult) return;
-        if (normalThrow) normalThrow = false;
+        if (DiceResults[2] != 0) return;
         const float throwForceDice = 75f;
         _throwDirectionDice = transform.forward;
         

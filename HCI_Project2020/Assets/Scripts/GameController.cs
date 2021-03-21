@@ -1,5 +1,6 @@
 ﻿
 using System;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -58,8 +59,20 @@ public class GameController : MonoBehaviour
 
     public void ResetScene()
     {
+        ResetStaticVars();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    private static void ResetStaticVars()
+    {
+        for (int i = 0; i < DiceThrowScript.DiceResults.Length; i++)
+        {
+            DiceThrowScript.DiceResults[i] = 0;
+        }
+        DiceThrowScript.normalThrow = false;
+        DiceThrowScript.areDicesStill = false;
+    }
+
     public void SpawnObjByIndex(Tracker trackerIndex, SpawnedObjPool objectToSpawn)
     {
         GameObject obj;
