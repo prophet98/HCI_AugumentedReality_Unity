@@ -1,6 +1,7 @@
 ﻿
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -54,6 +55,10 @@ public class GameController : MonoBehaviour
         _secondTrackerSpawnPos = secondTracker.GetComponentInChildren<Transform>();
     }
 
+    public void ResetScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
     public void SpawnObjByIndex(Tracker trackerIndex, SpawnedObjPool objectToSpawn)
     {
         GameObject obj;
@@ -68,14 +73,11 @@ public class GameController : MonoBehaviour
                 case SpawnedObjPool.Boy:
                     obj = Instantiate(zephyrElements[1].gameObject, _firstTrackerSpawnPos.position, Quaternion.identity);
                     obj.transform.SetParent(_firstTrackerSpawnPos);
-                    // obj.GetComponent<MeshRenderer>().enabled = false;
                     break;
                 case SpawnedObjPool.Girl:
                     obj = Instantiate(zephyrElements[2].gameObject, _firstTrackerSpawnPos.position, Quaternion.identity);
                     obj.transform.SetParent(_firstTrackerSpawnPos);
                     break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(objectToSpawn), objectToSpawn, null);
             }
         }
         else if (trackerIndex == Tracker.Second)
@@ -94,8 +96,6 @@ public class GameController : MonoBehaviour
                     obj = Instantiate(zephyrElements[2].gameObject, _secondTrackerSpawnPos.position, Quaternion.identity);
                     obj.transform.SetParent(_secondTrackerSpawnPos);
                     break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(objectToSpawn), objectToSpawn, null);
             }
         }
 
