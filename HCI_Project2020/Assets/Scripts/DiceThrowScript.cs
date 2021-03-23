@@ -69,6 +69,7 @@ public class DiceThrowScript : MonoBehaviour
         if (!_canThrow) return;
         if (GameController.Instance.gameState == GameController.GameState.WaitForDiceResult) return;
         if (DiceResults[2] != 0) return;
+        areDicesStill = false;
         const float throwForceDice = 75f;
         _throwDirectionDice = transform.forward;
         

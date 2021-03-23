@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -12,14 +13,24 @@ public class TableDiceEvaluator : MonoBehaviour
 
     public IEnumerator CheckDiceValue()
     {
-        Debug.Log("Check Dice Value");
-        new WaitForSeconds(.2f);
-        while (!diceThrowScript.DiceVelocities.Contains(Vector3.zero))
+        yield return new WaitForSeconds(.2f);
+        while (!CheckIfDiceAreMoving())
         {
             yield return null;
         }
         DiceThrowScript.areDicesStill = true;
     }
 
+    private bool CheckIfDiceAreMoving()
+    {
+        foreach (var dice in diceThrowScript.DiceVelocities)
+        {
+            if (dice.magnitude>0)
+            {
+                return false;
+            }
+        }
 
+        return true;
+    }
 }
