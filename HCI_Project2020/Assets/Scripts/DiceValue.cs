@@ -13,7 +13,11 @@ public class DiceValue : MonoBehaviour
     public static event DiceResult onDiceResult;
     private void OnTriggerEnter(Collider other)
     {
-        StartCoroutine(CheckForStill());
+        if (other.TryGetComponent(out TableDiceEvaluator _))
+        {
+            StartCoroutine(CheckForStill());    
+        }
+        
     }
 
     private IEnumerator CheckForStill()
