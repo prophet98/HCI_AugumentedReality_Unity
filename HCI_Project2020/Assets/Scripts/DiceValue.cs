@@ -56,7 +56,7 @@ public class DiceValue : MonoBehaviour
         }
 
         var parentObj = transform.parent.parent;
-        Debug.Log($"The {parentObj.name} made the value: {diceValue}");
+        //Debug.Log($"The {parentObj.name} made the value: {diceValue}");
         
         if (parentObj.name == DiceName01)
         {

@@ -73,48 +73,62 @@ public class GameController : MonoBehaviour
         DiceThrowScript.areDicesStill = false;
     }
 
-    public void SpawnObjByIndex(Tracker trackerIndex, SpawnedObjPool objectToSpawn)
+    public void SpawnObjByIndex(Tracker trackerIndex, int result)
     {
         GameObject obj;
-        if (trackerIndex == Tracker.First)
+        if (trackerIndex == Tracker.First) //spawn di modelli creati su zephyr.
         {
-            switch (objectToSpawn)
+            switch (result)
             {
-                case SpawnedObjPool.Default:
+                case 1:
+                    Debug.Log("spawn zephyr 1");
                     break;
-                case SpawnedObjPool.Glasses:
+                case 2:
+                    Debug.Log("spawn zephyr 2");
                     obj = Instantiate(zephyrElements[0].gameObject, _firstTrackerSpawnPos.position, Quaternion.identity);
                     obj.transform.SetParent(_firstTrackerSpawnPos);
                     break;
-                case SpawnedObjPool.Boy:
-                    
+                case 3:
+                    Debug.Log("spawn zephyr 3");
                     break;
-                case SpawnedObjPool.Girl:
+                case 4:
+                    Debug.Log("spawn zephyr 4");
                     break;
-                case SpawnedObjPool.Jewels:
-                    obj = Instantiate(zephyrElements[3].gameObject, _secondTrackerSpawnPos.position, Quaternion.identity);
+                case 5:
+                    Debug.Log("spawn zephyr 5");
+                    obj = Instantiate(zephyrElements[3].gameObject, _firstTrackerSpawnPos.position, Quaternion.identity);
                     obj.transform.SetParent(_firstTrackerSpawnPos);
+                    break;
+                case 6:
+                    Debug.Log("spawn zephyr 6");
                     break;
             }
         }
-        else if (trackerIndex == Tracker.Second)
+        else if (trackerIndex == Tracker.Second) //spawn del numero di persone che devono bere. (modello bicchiere)
         {
-            switch (objectToSpawn)
+            switch (result)
             {
-                case SpawnedObjPool.Default:
+                case 1:
+                    Debug.Log("spawn 1 glasses of alcohol");
                     break;
-                case SpawnedObjPool.Glasses:
-                    obj = Instantiate(zephyrElements[0].gameObject, _firstTrackerSpawnPos.position, Quaternion.identity);
+                case 2:
+                    Debug.Log("spawn 2 glasses of alcohol");
+                    obj = Instantiate(zephyrElements[1].gameObject, _secondTrackerSpawnPos.position, Quaternion.identity);
                     obj.transform.SetParent(_secondTrackerSpawnPos);
                     break;
-                case SpawnedObjPool.Boy:
-                    
+                case 3:
+                    Debug.Log("spawn 3 glasses of alcohol");
                     break;
-                case SpawnedObjPool.Girl:
+                case 4:
+                    Debug.Log("spawn 4 glasses of alcohol");
                     break;
-                case SpawnedObjPool.Jewels:
-                    obj = Instantiate(zephyrElements[3].gameObject, _secondTrackerSpawnPos.position, Quaternion.identity);
+                case 5:
+                    Debug.Log("spawn 5 glasses of alcohol");
+                    obj = Instantiate(zephyrElements[2].gameObject, _secondTrackerSpawnPos.position, Quaternion.identity);
                     obj.transform.SetParent(_secondTrackerSpawnPos);
+                    break;
+                case 6:
+                    Debug.Log("spawn 6 glasses of alcohol");
                     break;
             }
         }

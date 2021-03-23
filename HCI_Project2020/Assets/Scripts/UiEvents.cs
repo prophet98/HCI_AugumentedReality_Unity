@@ -36,10 +36,9 @@ public class UiEvents : MonoBehaviour
         if (DiceThrowScript.normalThrow == false && DiceThrowScript.DiceResults[0]!=0 && DiceThrowScript.DiceResults[1]!=0 )
         {
             SetUiAndPunch("NOW LOOK AT THE TWO MARKERS AND COMBINE THEM TOGETHER");
-            Debug.Log("OnDoubleDiceResult: Dices made the values " + DiceThrowScript.DiceResults[0] + " " + DiceThrowScript.DiceResults[1]);
             //TESTING SPAWN.
-            GameController.Instance.SpawnObjByIndex(GameController.Tracker.First, GameController.SpawnedObjPool.Glasses);
-            GameController.Instance.SpawnObjByIndex(GameController.Tracker.Second, GameController.SpawnedObjPool.Jewels);
+            GameController.Instance.SpawnObjByIndex(GameController.Tracker.First, DiceThrowScript.DiceResults[0]);
+            GameController.Instance.SpawnObjByIndex(GameController.Tracker.Second, DiceThrowScript.DiceResults[1]);
             GameController.Instance.gameState = GameController.GameState.WaitForDiceResult;
         }
     }
@@ -47,7 +46,6 @@ public class UiEvents : MonoBehaviour
     {
         if (DiceThrowScript.normalThrow && DiceThrowScript.DiceResults[2]!=0)
         {
-            Debug.Log("OnSingleDiceResult");
             SetUiAndPunch($"YOU WILL HAVE TO DRINK {DiceThrowScript.DiceResults[2]} SHOTS!");
             GameController.Instance.gameState = GameController.GameState.Default;
         }
