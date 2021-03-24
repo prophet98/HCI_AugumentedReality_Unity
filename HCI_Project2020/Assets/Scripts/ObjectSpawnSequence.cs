@@ -16,7 +16,7 @@ public class ObjectSpawnSequence : MonoBehaviour
     {
         _meshRenderer = GetComponentInChildren<MeshRenderer>();
     }
-    private void Start()
+    private void Awake()
     {
         _objTransform = transform;
         _endingScale = _objTransform.localScale;
@@ -25,38 +25,31 @@ public class ObjectSpawnSequence : MonoBehaviour
 
     public void OnTrackFoundAnimation()
     {
-        CheckGameState();
-        _objTransform.localScale = _startingScale;
-        _mySpawnTween = transform.DOScale(_endingScale, 3f);
+        if (CheckGameState())
+        {
+            _objTransform.localScale = _startingScale;
+            _mySpawnTween = transform.DOScale(_endingScale, 3f);  
+        }
     }
     public void OnTrackLostAnimation()
     {
-        CheckGameState();
-        if (_objTransform != null) 
+        if (CheckGameState())
         {
+            _objTransform.localScale = _startingScale; 
             _mySpawnTween.Rewind();
-            transform.localScale = _startingScale;
-            _objTransform.localScale = _startingScale;  
         }
     }
-    private void CheckGameState()
+    private bool CheckGameState()
     {
-        if (_meshRenderer!=null)
+        if (GameController.Instance.gameState == GameController.GameState.WaitForDiceResult)
         {
-            if (GameController.Instance.gameState == GameController.GameState.ThrowDices)
-            {
-                _meshRenderer.enabled = false;
-            }
-            else if (GameController.Instance.gameState == GameController.GameState.ThrowSingleDice)
-            {
-                _meshRenderer.enabled = false;
-            }
-            else
-            {
-                _meshRenderer.enabled = true;
-            }
+            return true;
+        }
+        if (GameController.Instance.gameState != GameController.GameState.WaitForDiceResult)
+        {
+            return false;
         }
         
+        return true;
     }
-    
 }

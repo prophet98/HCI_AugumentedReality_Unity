@@ -1,19 +1,35 @@
 ﻿
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class DiceValue : MonoBehaviour
 {
     public delegate void DiceResult();
+
+    private const string DiceName01 = "Dice01";
+    private const string DiceName02 = "Dice02";
+    
     public static event DiceResult onDiceResult;
     private void OnTriggerEnter(Collider other)
     {
-        if (DiceThrowScript.AreDicesStill && other.name == "Table")
+        if (other.TryGetComponent(out TableDiceEvaluator _))
         {
-            IntValueToDice(Convert.ToInt32(gameObject.name));
+            StartCoroutine(CheckForStill());    
         }
+        
     }
-    
+
+    private IEnumerator CheckForStill()
+    {
+        while (!DiceThrowScript.areDicesStill)
+        {
+            yield return null;
+        }
+        IntValueToDice(Convert.ToInt32(gameObject.name));
+    }
+
+
     private void IntValueToDice(int diceColliderValue)
     {
         int diceValue = 0;
@@ -40,8 +56,21 @@ public class DiceValue : MonoBehaviour
         }
 
         var parentObj = transform.parent.parent;
-        Debug.Log($"The {parentObj.name} made the value: {diceValue}");
-        DiceThrowScript.DiceResults.Add(diceValue);
+        //Debug.Log($"The {parentObj.name} made the value: {diceValue}");
+        
+        if (parentObj.name == DiceName01)
+        {
+            DiceThrowScript.DiceResults[0] = diceValue;
+        }
+        else if (parentObj.name == DiceName02)
+        {
+            DiceThrowScript.DiceResults[1] = diceValue;
+        }
+        else
+        {
+            DiceThrowScript.DiceResults[2] = diceValue;
+        }
+        
         onDiceResult?.Invoke();
     }
 

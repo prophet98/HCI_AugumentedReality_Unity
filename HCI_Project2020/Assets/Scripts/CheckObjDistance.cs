@@ -22,6 +22,7 @@ public class CheckObjDistance : MonoBehaviour
         if (dist <= 0.1f)
         {
             onCloseObj?.Invoke();
+            CancelInvoke();
         }
         print($"Distance to other: {formattedDistance}");
     }

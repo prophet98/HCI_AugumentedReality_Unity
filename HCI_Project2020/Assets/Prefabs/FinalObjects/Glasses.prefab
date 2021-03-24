@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7053145717460785456}
   - component: {fileID: 8854414250395760866}
   m_Layer: 0
-  m_Name: Glasses
+  m_Name: InstancedGlasses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8854414250395760869}
   m_LocalRotation: {x: 0.035943042, y: 0.979142, z: 0.007335804, w: 0.19983824}
-  m_LocalPosition: {x: -0.013700008, y: 0.020500004, z: 0.0063}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.008229378, y: 0.008229378, z: 0.008229379}
   m_Children: []
   m_Father: {fileID: 0}

@@ -43,4 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc2f13923660844ca73aad6e991bcd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstTracker: {fileID: 0}
+  secondTracker: {fileID: 0}
+  zephyrElements:
+  - {fileID: 8854414250395760869, guid: 9b1d73b9690240448ac67bfef43fd351, type: 3}
+  - {fileID: 2778409629582145850, guid: c509672219921da4ebe08e2f1fa42a10, type: 3}
+  - {fileID: 501414037376101253, guid: 4631abe9828481e43a04b1d19aecba05, type: 3}
   gameState: 0

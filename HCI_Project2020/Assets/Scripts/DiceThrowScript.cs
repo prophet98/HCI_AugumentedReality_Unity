@@ -1,37 +1,38 @@
 ﻿
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
+using UnityEngine.XR.WSA;
 using Random = UnityEngine.Random;
 
 public class DiceThrowScript : MonoBehaviour
 {
     private List<GameObject> Dices3D => dices3D;
-    private readonly List<Rigidbody> _rbList = new List<Rigidbody>();
     public List<Vector3> DiceVelocities { get; } = new List<Vector3>();
 
     private Vector3 _throwDirectionDice;
-    
-    private bool _canThrow;
-    
+
     [SerializeField] private TableDiceEvaluator tableDiceEvaluator;
     [SerializeField] private List<GameObject> dices3D;
 
-    public static bool AreDicesStill;
-    public static bool NormalThrow;
+    public static bool areDicesStill = false;
+    public static bool normalThrow = false;
+    private bool _canThrow;
 
-    public static List<int> DiceResults = new List<int>();
+    public static int[] DiceResults = {0, 0, 0};
 
-    public void Enabled() //Used by Vuforia
+
+    private void Start()
     {
-        foreach (var dice in GetComponentsInChildren<BoxCollider>())
-        {
-            dice.gameObject.SetActive(false);
-        }
+        GetComponentInParent<DefaultTrackableEventHandler>().OnTargetLost.Invoke();
+        GameController.Instance.gameState = GameController.GameState.ThrowDices;
+    }
+
+    private void SetUpDices()
+    {
         dices3D.Clear();
-        //add check for single or double dice
-        if (NormalThrow)
+        
+        if (normalThrow)
         {
             dices3D.Add(GetComponentInChildren<BoxCollider>(true).gameObject);
         }
@@ -41,77 +42,85 @@ public class DiceThrowScript : MonoBehaviour
             {
                 dices3D.Add(GetComponentsInChildren<BoxCollider>(true)[i].gameObject);
             }
-            
         }
         foreach (var dice in Dices3D)
         {
             DiceVelocities.Add(dice.GetComponent<Rigidbody>().velocity);
+            dice.gameObject.SetActive(false);
         }
+        
         PosReset();
     }
 
     private void OnEnable()
     {
-        InvokeRepeating(nameof(UpdateDiceVelocity), 0.2f, 0.2f);
+        SetUpDices();
     }
 
     private void OnDisable()
     {
         CancelInvoke();
         DiceVelocities.Clear();
-        _rbList.Clear();
+        PosReset();
     }
 
     public void DiceThrow()
     {
         if (!_canThrow) return;
         if (GameController.Instance.gameState == GameController.GameState.WaitForDiceResult) return;
+        if (DiceResults[2] != 0) return;
+        areDicesStill = false;
         const float throwForceDice = 75f;
-        for (int i = 0; i < Dices3D.Count; i++)
+        _throwDirectionDice = transform.forward;
+        
+        foreach (var dice in dices3D)
         {
-            _throwDirectionDice = GetComponentInParent<Transform>().forward;
-            Dices3D[i].SetActive(true);
-            Dices3D[i].GetComponent<MeshRenderer>().enabled = true;
+            dice.SetActive(true);
+            var diceRb = dice.GetComponent<Rigidbody>();
+            dice.GetComponent<MeshRenderer>().enabled = true;
             foreach (var sprite in GetComponentsInChildren<SpriteRenderer>())
             {
                 sprite.enabled = true;
             }
-            _rbList[i].isKinematic = false;
-            _rbList[i].useGravity = true;
-            _rbList[i].AddForce(_throwDirectionDice * throwForceDice);
-            _rbList[i].AddTorque(Random.Range(200f, 400f), Random.Range(200f, 400f), Random.Range(200f, 400f));
+            
+            diceRb.isKinematic = false;
+            diceRb.useGravity = true;
+            diceRb.AddForce(_throwDirectionDice * throwForceDice);
+            diceRb.AddTorque(Random.Range(200f, 400f), Random.Range(200f, 400f), Random.Range(200f, 400f));
         }
 
-        StartCoroutine(tableDiceEvaluator.CheckDiceValue());
-        
         _canThrow = false;
+        StartCoroutine(tableDiceEvaluator.CheckDiceValue());
+        InvokeRepeating(nameof(UpdateDiceVelocity), 0.2f, 0.2f);
     }
     
     private void UpdateDiceVelocity()
     {
         for (int i = 0; i < DiceVelocities.Count; i++)
         {
-            DiceVelocities[i] = _rbList[i].velocity;
+            DiceVelocities[i] = dices3D[i].GetComponent<Rigidbody>().velocity;
         }
     }
     
     private void PosReset()
     {
         _canThrow = true;
+
         for (int i = 0; i < Dices3D.Count; i++)
         {
-            Dices3D[i].transform.localPosition = new Vector3(i*10f, 0, 0);
-            _rbList.Add(Dices3D[i].GetComponent<Rigidbody>());
-            _rbList[i].isKinematic = true;
-            _rbList[i].useGravity = false;
+            var diceRb = Dices3D[i].GetComponent<Rigidbody>();
+            var currDice = dices3D[i];
+            currDice.transform.localPosition = new Vector3(i*10f, 0, 0);
+            diceRb.isKinematic = true;
+            diceRb.useGravity = false;
             Dices3D[i].GetComponent<MeshRenderer>().enabled = false;
             foreach (var sprite in GetComponentsInChildren<SpriteRenderer>())
             {
                 sprite.enabled = false;
             }
-            Dices3D[i].transform.rotation = Quaternion.identity;
-            Dices3D[i].transform.localRotation = Quaternion.Euler(Random.Range(0, 180), Random.Range(0, 180), Random.Range(0, 180));
-            dices3D[i].SetActive(false);
+            currDice.transform.rotation = Quaternion.identity;
+            currDice.transform.localRotation = Quaternion.Euler(Random.Range(0, 180), Random.Range(0, 180), Random.Range(0, 180));
+            currDice.SetActive(false);
         }
     }
     
