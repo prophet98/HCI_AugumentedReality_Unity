@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject[] zephyrActiveElements;
     [SerializeField] private GameObject[] zephyrPassiveElements;
     [SerializeField] private GameObject[] zephyrGlassesElements;
+    
     public static GameController Instance => _instance;
     private Transform _firstTrackerSpawnPos, _secondTrackerSpawnPos;
     public enum GameState
@@ -17,7 +18,8 @@ public class GameController : MonoBehaviour
         Default,
         ThrowDices,
         ThrowSingleDice,
-        WaitForDiceResult
+        WaitForDiceResult,
+        NewTurn
     }
 
     public GameState gameState = GameState.Default;

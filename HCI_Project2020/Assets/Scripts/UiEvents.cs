@@ -6,6 +6,8 @@ using DG.Tweening;
 public class UiEvents : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI uiText;
+    [SerializeField] private GameObject virtualButton;
+    [SerializeField] private Sprite virtualButtonReturnSprite;
     private void OnEnable()
     {
         DiceValue.onDiceResult += OnSingleDiceResult;
@@ -47,7 +49,8 @@ public class UiEvents : MonoBehaviour
         if (DiceThrowScript.normalThrow && DiceThrowScript.DiceResults[2]!=0)
         {
             SetUiAndPunch($"YOU WILL HAVE TO DRINK {DiceThrowScript.DiceResults[2]} SHOTS!");
-            GameController.Instance.gameState = GameController.GameState.Default;
+            GameController.Instance.gameState = GameController.GameState.NewTurn;
+            virtualButton.GetComponentInChildren<SpriteRenderer>().sprite = virtualButtonReturnSprite;
         }
     }
     
