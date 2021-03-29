@@ -48,6 +48,7 @@ MonoBehaviour:
   zephyrActiveElements:
   - {fileID: 8854414250395760869, guid: 9b1d73b9690240448ac67bfef43fd351, type: 3}
   - {fileID: 4604602817571081825, guid: ee18291ac2547514c8db80f0eb2faac0, type: 3}
+  - {fileID: 6793105633548085432, guid: 5f2d04cf48f39a54782ac85f385bf378, type: 3}
   zephyrPassiveElements:
   - {fileID: 2778409629582145850, guid: c509672219921da4ebe08e2f1fa42a10, type: 3}
   zephyrGlassesElements:

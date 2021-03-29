@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8854414250395760869
+--- !u!1 &3841649748438890226
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,46 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8190607866651910751}
-  - component: {fileID: 5045502595066605050}
-  - component: {fileID: 7053145717460785456}
-  - component: {fileID: 8854414250395760866}
+  - component: {fileID: 4985041505329209031}
+  - component: {fileID: 7012478994513668706}
+  - component: {fileID: 6338096893219240616}
   m_Layer: 0
-  m_Name: Glasses
+  m_Name: Group_Global
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8190607866651910751
+--- !u!4 &4985041505329209031
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8854414250395760869}
-  m_LocalRotation: {x: 0.035943042, y: 0.979142, z: 0.007335804, w: 0.19983824}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.008229378, y: 0.008229378, z: 0.008229379}
+  m_GameObject: {fileID: 3841649748438890226}
+  m_LocalRotation: {x: -0.23867553, y: 0.6137919, z: 0.68836606, w: 0.30404904}
+  m_LocalPosition: {x: -0.0096, y: -0.0089, z: -0.0106}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 6128877071988355586}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 156.929, z: 4.2050004}
---- !u!33 &5045502595066605050
+  m_LocalEulerAnglesHint: {x: -98.042, y: 198.613, z: -63.863983}
+--- !u!33 &7012478994513668706
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8854414250395760869}
-  m_Mesh: {fileID: 5633719742858805988, guid: 21afd57c4dac62041831dd55600d8a1d, type: 3}
---- !u!23 &7053145717460785456
+  m_GameObject: {fileID: 3841649748438890226}
+  m_Mesh: {fileID: 3687509337930656698, guid: d3cb3252227f59542b65ef8effbcfbb5, type: 3}
+--- !u!23 &6338096893219240616
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8854414250395760869}
+  m_GameObject: {fileID: 3841649748438890226}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -59,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0bbe901dca7c7914da54a7db5b755a45, type: 2}
+  - {fileID: 2100000, guid: 42a1c970e46338e43b9167511ff40040, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -80,15 +79,34 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &8854414250395760866
-MonoBehaviour:
+--- !u!1 &6793105633548085432
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8854414250395760869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e8e53d45791c52498ee54dbd98b8c77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6128877071988355586}
+  m_Layer: 0
+  m_Name: BodySpray
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6128877071988355586
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6793105633548085432}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4985041505329209031}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
