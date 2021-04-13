@@ -1,16 +1,19 @@
 ﻿
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class GameController : MonoBehaviour
 {
     private static GameController _instance;
-    [SerializeField] private GameObject firstTracker;
-    [SerializeField] private GameObject secondTracker;
+    private GameObject _firstTracker;
+    private GameObject _secondTracker;
     [SerializeField] private GameObject[] zephyrActiveElements;
     [SerializeField] private GameObject[] zephyrPassiveElements;
     [SerializeField] private GameObject[] zephyrGlassesElements;
-    
+    [SerializeField] private Animation loadingAnimation;
     public static GameController Instance => _instance;
     private Transform _firstTrackerSpawnPos, _secondTrackerSpawnPos;
     public enum GameState
@@ -42,19 +45,37 @@ public class GameController : MonoBehaviour
         } else 
         {
             _instance = this;
+            DontDestroyOnLoad(this);
         }
     }
 
+    private void TrackerSetup()
+    {
+        _firstTracker = GameObject.Find("FirstObjTarget").gameObject;
+        _secondTracker = GameObject.Find("SecondObjTarget").gameObject;
+        _firstTrackerSpawnPos = _firstTracker.GetComponentInChildren<Transform>();
+        _secondTrackerSpawnPos = _secondTracker.GetComponentInChildren<Transform>();
+    }
     private void Start()
     {
-        _firstTrackerSpawnPos = firstTracker.GetComponentInChildren<Transform>();
-        _secondTrackerSpawnPos = secondTracker.GetComponentInChildren<Transform>();
+        TrackerSetup();
     }
 
+
+    private IEnumerator ReloadScene()
+    {
+        loadingAnimation.Play("LoadingAnimation");
+        yield return new WaitForSeconds(.7f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        loadingAnimation.Play("LoadingAnimationExit");
+        yield return new WaitForSeconds(.5f);
+        gameState = GameState.Default;
+        TrackerSetup();
+    }
     public void ResetScene()
     {
         ResetStaticVars();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        StartCoroutine(ReloadScene());
     }
 
     private static void ResetStaticVars()

@@ -1,13 +1,17 @@
 ﻿
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
+using Vuforia;
 
 public class UiEvents : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI uiText;
     [SerializeField] private GameObject virtualButton;
     [SerializeField] private Sprite virtualButtonReturnSprite;
+
     private void OnEnable()
     {
         DiceValue.onDiceResult += OnSingleDiceResult;
@@ -61,5 +65,8 @@ public class UiEvents : MonoBehaviour
         uiText.transform.DOPunchScale(new Vector3(2, 2, 2), .5f);
         uiText.gameObject.SetActive(true);
     }
-    
+
+
+
+
 }

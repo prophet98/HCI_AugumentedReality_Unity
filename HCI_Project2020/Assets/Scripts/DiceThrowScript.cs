@@ -66,7 +66,11 @@ public class DiceThrowScript : MonoBehaviour
 
     public void DiceThrow()
     {
-        if (GameController.Instance.gameState == GameController.GameState.NewTurn) GameController.Instance.ResetScene();
+        if (GameController.Instance.gameState == GameController.GameState.NewTurn)
+        {
+            GameController.Instance.ResetScene();
+            return;
+        }
         if (!_canThrow) return;
         if (GameController.Instance.gameState == GameController.GameState.WaitForDiceResult) return;
         if (DiceResults[2] != 0) return;
