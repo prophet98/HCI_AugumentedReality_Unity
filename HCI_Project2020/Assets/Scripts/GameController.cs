@@ -131,7 +131,6 @@ public class GameController : MonoBehaviour
         {
             switch (result)
             {
-                //TODO change indexes 
                 case 1:
                     Debug.Log("spawn 1 glasses of alcohol");
                     obj = Instantiate(zephyrGlassesElements[0].gameObject, _secondTrackerSpawnPos.position, Quaternion.identity);
@@ -139,27 +138,27 @@ public class GameController : MonoBehaviour
                     break;
                 case 2:
                     Debug.Log("spawn 2 glasses of alcohol");
-                    obj = Instantiate(zephyrGlassesElements[0].gameObject, _secondTrackerSpawnPos.position, Quaternion.identity);
+                    obj = Instantiate(zephyrGlassesElements[1].gameObject, _secondTrackerSpawnPos.position, Quaternion.identity);
                     obj.transform.SetParent(_secondTrackerSpawnPos);
                     break;
                 case 3:
                     Debug.Log("spawn 3 glasses of alcohol");
-                    obj = Instantiate(zephyrGlassesElements[0].gameObject, _secondTrackerSpawnPos.position, Quaternion.identity);
+                    obj = Instantiate(zephyrGlassesElements[2].gameObject, _secondTrackerSpawnPos.position, Quaternion.identity);
                     obj.transform.SetParent(_secondTrackerSpawnPos);
                     break;
                 case 4:
                     Debug.Log("spawn 4 glasses of alcohol");
-                    obj = Instantiate(zephyrGlassesElements[0].gameObject, _secondTrackerSpawnPos.position, Quaternion.identity);
+                    obj = Instantiate(zephyrGlassesElements[3].gameObject, _secondTrackerSpawnPos.position, Quaternion.identity);
                     obj.transform.SetParent(_secondTrackerSpawnPos);
                     break;
                 case 5:
                     Debug.Log("spawn 5 glasses of alcohol");
-                    obj = Instantiate(zephyrGlassesElements[0].gameObject, _secondTrackerSpawnPos.position, Quaternion.identity);
+                    obj = Instantiate(zephyrGlassesElements[4].gameObject, _secondTrackerSpawnPos.position, Quaternion.identity);
                     obj.transform.SetParent(_secondTrackerSpawnPos);
                     break;
                 case 6:
                     Debug.Log("spawn 6 glasses of alcohol");
-                    obj = Instantiate(zephyrGlassesElements[0].gameObject, _secondTrackerSpawnPos.position, Quaternion.identity);
+                    obj = Instantiate(zephyrGlassesElements[5].gameObject, _secondTrackerSpawnPos.position, Quaternion.identity);
                     obj.transform.SetParent(_secondTrackerSpawnPos);
                     break;
             }

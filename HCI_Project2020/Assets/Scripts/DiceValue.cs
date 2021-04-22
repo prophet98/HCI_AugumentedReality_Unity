@@ -70,7 +70,13 @@ public class DiceValue : MonoBehaviour
         {
             DiceThrowScript.DiceResults[2] = diceValue;
         }
-        
+
+        foreach (var VARIABLE in DiceThrowScript.DiceResults)
+        {
+            Debug.Log(VARIABLE);
+        }
+
+        ;
         onDiceResult?.Invoke();
     }
 
