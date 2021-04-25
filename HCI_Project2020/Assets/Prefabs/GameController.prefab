@@ -248,15 +248,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc2f13923660844ca73aad6e991bcd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstTracker: {fileID: 0}
-  secondTracker: {fileID: 0}
   zephyrActiveElements:
   - {fileID: 6447470312996670454, guid: c8088fe50a0097340852b8d0b09a0d1d, type: 3}
   - {fileID: 4604602817571081825, guid: ee18291ac2547514c8db80f0eb2faac0, type: 3}
-  - {fileID: 6793105633548085432, guid: 5f2d04cf48f39a54782ac85f385bf378, type: 3}
+  - {fileID: 6791415248179091277, guid: cb1894706bf93d84db24cb3279a576e3, type: 3}
+  - {fileID: 3450605295408650010, guid: 62cd95f0e83101b45a70779d3cd34af8, type: 3}
+  - {fileID: 2282902743739615580, guid: 49c971aea74eeac47b6b28263bd660bd, type: 3}
   zephyrPassiveElements:
-  - {fileID: 2778409629582145850, guid: c509672219921da4ebe08e2f1fa42a10, type: 3}
+  - {fileID: 5198473804328055842, guid: f6c79293104a1db4aaee455c6caa8abd, type: 3}
+  - {fileID: 6793105633548085432, guid: 5f2d04cf48f39a54782ac85f385bf378, type: 3}
   zephyrGlassesElements:
-  - {fileID: 501414037376101253, guid: 4631abe9828481e43a04b1d19aecba05, type: 3}
+  - {fileID: 8360392690098488080, guid: b5709906a31065e438e961ae434d74eb, type: 3}
+  - {fileID: 6438731013846688266, guid: 95a28a4c049368b4783360a4e6238af7, type: 3}
+  - {fileID: 3168250426404315702, guid: 9fcd82dd5e9abd14f9f1772aeb8ce9f2, type: 3}
+  - {fileID: 7765844923788805881, guid: e7698a530ff8f1b43947062519078d0a, type: 3}
+  - {fileID: 7324618826524331672, guid: 37e8007a9ada4fb4cad57f5b279691ba, type: 3}
+  - {fileID: 2792127714742198264, guid: 979f1927835279d48a277ea8c409237e, type: 3}
   loadingAnimation: {fileID: 1468334661}
   gameState: 0
