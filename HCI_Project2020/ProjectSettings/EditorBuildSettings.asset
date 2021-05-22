@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: ef65cca52ab6972439067946332e6ac0
   - enabled: 1
-    path: Assets/SamplesResources/Scenes/0-Main.unity
-    guid: a09cb257d566c489595b16ab37547666
-  - enabled: 1
     path: Assets/Scenes/Vuforia_TestingScene.unity
     guid: 15f3a4b69b6eb25489f0887f991f17da
   m_configObjects:
