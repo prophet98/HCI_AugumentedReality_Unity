@@ -9,16 +9,11 @@ public class VirtualButton : MonoBehaviour
     private void Start()
     {
         virtualButton.GetComponent<VirtualButtonBehaviour>().RegisterOnButtonPressed(ButtonPressed);
-        virtualButton.GetComponent<VirtualButtonBehaviour>().RegisterOnButtonReleased(ButtonReleased);
     }
 
     private void ButtonPressed(VirtualButtonBehaviour virtualButtonBehaviour)
     {
-        Debug.Log("Premuto!");
+        // Debug.Log("Premuto!");
         onPushButton.Invoke();
-    }
-    private void ButtonReleased(VirtualButtonBehaviour virtualButtonBehaviour)
-    {
-        Debug.Log("Lasciato!");
     }
 }

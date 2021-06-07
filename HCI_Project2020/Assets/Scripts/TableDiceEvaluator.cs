@@ -1,11 +1,11 @@
-﻿
-using System;
-using System.Collections;
+﻿using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public class TableDiceEvaluator : MonoBehaviour
 {
     [SerializeField] private DiceThrowScript diceThrowScript;
+
     private void OnEnable()
     {
         DiceThrowScript.areDicesStill = false;
@@ -18,19 +18,12 @@ public class TableDiceEvaluator : MonoBehaviour
         {
             yield return null;
         }
+
         DiceThrowScript.areDicesStill = true;
     }
 
     private bool CheckIfDiceAreMoving()
     {
-        foreach (var dice in diceThrowScript.DiceVelocities)
-        {
-            if (dice.magnitude>0)
-            {
-                return false;
-            }
-        }
-
-        return true;
+        return diceThrowScript.DiceVelocities.All(dice => !(dice.magnitude > 0));
     }
 }

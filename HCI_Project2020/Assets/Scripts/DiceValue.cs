@@ -10,7 +10,7 @@ public class DiceValue : MonoBehaviour
     private const string DiceName01 = "Dice01";
     private const string DiceName02 = "Dice02";
     
-    public static event DiceResult onDiceResult;
+    public static event DiceResult OnDiceResult;
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out TableDiceEvaluator _))
@@ -56,28 +56,25 @@ public class DiceValue : MonoBehaviour
         }
 
         var parentObj = transform.parent.parent;
-        //Debug.Log($"The {parentObj.name} made the value: {diceValue}");
         
-        if (parentObj.name == DiceName01)
+        switch (parentObj.name)
         {
-            DiceThrowScript.DiceResults[0] = diceValue;
-        }
-        else if (parentObj.name == DiceName02)
-        {
-            DiceThrowScript.DiceResults[1] = diceValue;
-        }
-        else
-        {
-            DiceThrowScript.DiceResults[2] = diceValue;
-        }
-
-        foreach (var VARIABLE in DiceThrowScript.DiceResults)
-        {
-            Debug.Log(VARIABLE);
+            case DiceName01:
+                DiceThrowScript.DiceResults[0] = diceValue;
+                break;
+            case DiceName02:
+                DiceThrowScript.DiceResults[1] = diceValue;
+                break;
+            default:
+                DiceThrowScript.DiceResults[2] = diceValue;
+                break;
         }
 
-        ;
-        onDiceResult?.Invoke();
+        // foreach (var VARIABLE in DiceThrowScript.DiceResults)
+        // {
+        //     Debug.Log(VARIABLE);
+        // }
+        OnDiceResult?.Invoke();
     }
 
     

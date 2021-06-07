@@ -1,21 +1,14 @@
-﻿using System;
-using System.Collections;
-using DG.Tweening;
+﻿using DG.Tweening;
 using UnityEngine;
-using Vuforia;
+
 
 public class ObjectSpawnSequence : MonoBehaviour
 {
     private Vector3 _startingScale;
     private Vector3 _endingScale;
     private Transform _objTransform;
-    private Tween _mySpawnTween = null;
-    private MeshRenderer _meshRenderer;
+    private Tween _mySpawnTween;
 
-    private void OnEnable()
-    {
-        _meshRenderer = GetComponentInChildren<MeshRenderer>();
-    }
     private void Awake()
     {
         _objTransform = transform;
@@ -28,28 +21,21 @@ public class ObjectSpawnSequence : MonoBehaviour
         if (CheckGameState())
         {
             _objTransform.localScale = _startingScale;
-            _mySpawnTween = transform.DOScale(_endingScale, 3f);  
+            _mySpawnTween = transform.DOScale(_endingScale, 2.5f);
         }
     }
+
     public void OnTrackLostAnimation()
     {
         if (CheckGameState())
         {
-            _objTransform.localScale = _startingScale; 
+            _objTransform.localScale = _startingScale;
             _mySpawnTween.Rewind();
         }
     }
-    private bool CheckGameState()
+
+    private static bool CheckGameState()
     {
-        if (GameController.Instance.gameState == GameController.GameState.WaitForDiceResult)
-        {
-            return true;
-        }
-        if (GameController.Instance.gameState != GameController.GameState.WaitForDiceResult)
-        {
-            return false;
-        }
-        
-        return true;
+        return GameController.Instance.gameState == GameController.GameState.WaitForDiceResult;
     }
 }

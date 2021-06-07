@@ -1,8 +1,6 @@
 ﻿
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR.WSA;
 using Random = UnityEngine.Random;
 
 public class DiceThrowScript : MonoBehaviour
@@ -19,7 +17,7 @@ public class DiceThrowScript : MonoBehaviour
     public static bool normalThrow = false;
     private bool _canThrow;
 
-    public static int[] DiceResults = {0, 0, 0};
+    public static readonly int[] DiceResults = {0, 0, 0};
 
 
     private void Start()
@@ -80,7 +78,6 @@ public class DiceThrowScript : MonoBehaviour
         
         foreach (var dice in dices3D)
         {
-            Debug.Log("dice");
             dice.SetActive(true);
             var diceRb = dice.GetComponent<Rigidbody>();
             dice.GetComponent<MeshRenderer>().enabled = true;
