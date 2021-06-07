@@ -13,7 +13,12 @@ public class VirtualButton : MonoBehaviour
 
     private void ButtonPressed(VirtualButtonBehaviour virtualButtonBehaviour)
     {
-        // Debug.Log("Premuto!");
+        Debug.Log("Premuto!");
         onPushButton.Invoke();
+    }
+
+    public void AlignButtonAndTableRotation()
+    {
+        this.GetComponentInParent<Transform>().localRotation = Quaternion.identity;
     }
 }

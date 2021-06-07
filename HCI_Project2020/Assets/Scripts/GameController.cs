@@ -47,6 +47,8 @@ public class GameController : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(this);
         }
+
+        TrackerSetup();
     }
 
     private void TrackerSetup()
@@ -55,11 +57,6 @@ public class GameController : MonoBehaviour
         _secondTracker = GameObject.Find("SecondObjTarget").gameObject;
         _firstTrackerSpawnPos = _firstTracker.GetComponentInChildren<Transform>();
         _secondTrackerSpawnPos = _secondTracker.GetComponentInChildren<Transform>();
-    }
-
-    private void Start()
-    {
-        TrackerSetup();
     }
 
 

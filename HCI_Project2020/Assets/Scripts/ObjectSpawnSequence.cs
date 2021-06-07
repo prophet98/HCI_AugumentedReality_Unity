@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using UnityEngine;
 
 
@@ -20,8 +21,11 @@ public class ObjectSpawnSequence : MonoBehaviour
     {
         if (CheckGameState())
         {
+            _objTransform.gameObject.SetActive(true);
             _objTransform.localScale = _startingScale;
             _mySpawnTween = transform.DOScale(_endingScale, 2.5f);
+            var spawnedObj = _objTransform.GetComponentInChildren<Transform>(true).gameObject;
+            spawnedObj.SetActive(true);
         }
     }
 
@@ -29,12 +33,14 @@ public class ObjectSpawnSequence : MonoBehaviour
     {
         if (CheckGameState())
         {
+            _objTransform.gameObject.SetActive(false);
             _objTransform.localScale = _startingScale;
-            _mySpawnTween.Rewind();
+            var spawnedObj = _objTransform.GetComponentInChildren<Transform>(true).gameObject;
+            spawnedObj.SetActive(false);
         }
     }
 
-    private static bool CheckGameState()
+    private bool CheckGameState()
     {
         return GameController.Instance.gameState == GameController.GameState.WaitForDiceResult;
     }
