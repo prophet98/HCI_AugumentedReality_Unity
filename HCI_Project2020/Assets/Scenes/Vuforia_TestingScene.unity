@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc2f13923660844ca73aad6e991bcd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!21 &558325363
+--- !u!21 &376840041
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -142,7 +142,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: 'DiceTracker24Material
 
-    -46682'
+    42500'
   m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -156,6 +156,34 @@ Material:
     m_TexEnvs:
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: fe265c4d86974822b5e079ba095a371d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
+--- !u!21 &701556238
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 'ModTrackerMaterial
+
+    42952'
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: f73c4b822f0c4abda8f096c15d48932f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
@@ -541,6 +569,7 @@ GameObject:
   - component: {fileID: 1083254462}
   - component: {fileID: 1083254461}
   - component: {fileID: 1083254460}
+  - component: {fileID: 1083254466}
   m_Layer: 0
   m_Name: ARCamera
   m_TagString: MainCamera
@@ -670,6 +699,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1083254466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083254459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 342ae03ccf30aa547814078974086884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1149093283
 Mesh:
   m_ObjectHideFlags: 0
@@ -833,16 +874,16 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!21 &1424373540
+--- !u!21 &1361633349
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 'ModTrackerMaterial
+  m_Name: 'PersonTrackerMaterial
 
-    -46672'
+    42604'
   m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -855,7 +896,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: f73c4b822f0c4abda8f096c15d48932f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 053981cf425c4b2ab29b53f875b62a61, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
@@ -1193,34 +1234,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 641860062532531245}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &1945580828
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 'PersonTrackerMaterial
-
-    -46686'
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 053981cf425c4b2ab29b53f875b62a61, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1001 &211622639620187979
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1306,7 +1319,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1424373540}
+      objectReference: {fileID: 701556238}
     - target: {fileID: 641860060713325135, guid: 5966e7f0e726de34e9491ed1e1e4c87c,
         type: 3}
       propertyPath: m_Mesh
@@ -1321,7 +1334,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 558325363}
+      objectReference: {fileID: 376840041}
     - target: {fileID: 641860061899120802, guid: 5966e7f0e726de34e9491ed1e1e4c87c,
         type: 3}
       propertyPath: m_Name
@@ -1391,7 +1404,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1945580828}
+      objectReference: {fileID: 1361633349}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5966e7f0e726de34e9491ed1e1e4c87c, type: 3}
 --- !u!1001 &5611088204612719892

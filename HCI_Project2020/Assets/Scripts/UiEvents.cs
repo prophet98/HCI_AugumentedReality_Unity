@@ -27,7 +27,7 @@ public class UiEvents : MonoBehaviour
     {
         SetUiAndPunch("NICE! NOW GO BACK TO THE DICE AND CHECK HOW MANY SHOTS YOU HAVE TO TAKE!");
         SoundManager.instance?.Play(Sound.Names.ClashObject);
-        MobileVibrator.Vibrate();
+        MobileVibrator.Vibrate(10000);
         GameController.Instance.gameState = GameController.GameState.ThrowSingleDice;
         DiceThrowScript.normalThrow = true;
     }

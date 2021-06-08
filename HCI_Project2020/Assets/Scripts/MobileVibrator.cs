@@ -1,6 +1,4 @@
-﻿
-
-using UnityEngine;
+﻿using UnityEngine;
 
 public static class MobileVibrator
 {
@@ -13,34 +11,35 @@ public static class MobileVibrator
     public static AndroidJavaObject currentActivity;
     public static AndroidJavaObject vibrator;
 #endif
-
-
-    public static void Vibrate(long milliseconds = 250)
+    
+    public static void Vibrate(long milliseconds)
     {
-        if (isAndroid())
-        {
+        if (IsAndroid())
             vibrator.Call("vibrate", milliseconds);
-        }
         else
-        {
             Handheld.Vibrate();
-        }
     }
-
+    
+    public static void Vibrate(VibrationAmount vibrationAmount)
+    {
+        if (IsAndroid())
+            vibrator.Call("vibrate", (int)vibrationAmount);
+        else
+            Handheld.Vibrate();
+    }
     public static void Cancel()
     {
-        if (isAndroid())
-        {
+        if (IsAndroid())
             vibrator.Call("cancel");
-        }
     }
-    public static bool isAndroid()
+    
+    public static bool IsAndroid()
     {
 #if UNITY_ANDROID && !UNITY_EDITOR
-        return true;
+	    return true;
 #else
-    return false;
+        return false;
 #endif
     }
-
 }
+
