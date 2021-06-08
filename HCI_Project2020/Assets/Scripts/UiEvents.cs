@@ -26,6 +26,8 @@ public class UiEvents : MonoBehaviour
     private void OnCloseDistance()
     {
         SetUiAndPunch("NICE! NOW GO BACK TO THE DICE AND CHECK HOW MANY SHOTS YOU HAVE TO TAKE!");
+        SoundManager.instance?.Play(Sound.Names.ClashObject);
+        MobileVibrator.Vibrate();
         GameController.Instance.gameState = GameController.GameState.ThrowSingleDice;
         DiceThrowScript.normalThrow = true;
     }

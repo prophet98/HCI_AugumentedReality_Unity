@@ -8,7 +8,6 @@ public class ObjectSpawnSequence : MonoBehaviour
     private Vector3 _startingScale;
     private Vector3 _endingScale;
     private Transform _objTransform;
-    private Tween _mySpawnTween;
 
     private void Awake()
     {
@@ -23,7 +22,7 @@ public class ObjectSpawnSequence : MonoBehaviour
         {
             _objTransform.gameObject.SetActive(true);
             _objTransform.localScale = _startingScale;
-            _mySpawnTween = transform.DOScale(_endingScale, 2.5f);
+            transform.DOScale(_endingScale, 2.5f);
             var spawnedObj = _objTransform.GetComponentInChildren<Transform>(true).gameObject;
             spawnedObj.SetActive(true);
             SoundManager.instance?.Play(Sound.Names.SpawnObject);
