@@ -18,6 +18,8 @@ public class CheckObjDistance : MonoBehaviour
         // var formattedDistance = Convert.ToDouble($"{dist:0.00}");
 
         if (!(dist <= 0.1f)) return;
+        SoundManager.instance?.Play(Sound.Names.ClashObject);
+
         OnCloseObj?.Invoke();
         CancelInvoke();
         // print($"Distance to other: {formattedDistance}");

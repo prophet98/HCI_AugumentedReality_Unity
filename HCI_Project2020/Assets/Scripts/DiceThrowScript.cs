@@ -91,7 +91,7 @@ public class DiceThrowScript : MonoBehaviour
             diceRb.AddForce(_throwDirectionDice * throwForceDice);
             diceRb.AddTorque(Random.Range(200f, 400f), Random.Range(200f, 400f), Random.Range(200f, 400f));
         }
-
+        SoundManager.instance?.Play(Sound.Names.DiceThrow);
         _canThrow = false;
         StartCoroutine(tableDiceEvaluator.CheckDiceValue());
         InvokeRepeating(nameof(UpdateDiceVelocity), 0.2f, 0.2f);

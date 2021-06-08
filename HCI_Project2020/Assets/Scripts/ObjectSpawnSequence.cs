@@ -26,6 +26,8 @@ public class ObjectSpawnSequence : MonoBehaviour
             _mySpawnTween = transform.DOScale(_endingScale, 2.5f);
             var spawnedObj = _objTransform.GetComponentInChildren<Transform>(true).gameObject;
             spawnedObj.SetActive(true);
+            SoundManager.instance?.Play(Sound.Names.SpawnObject);
+
         }
     }
 
