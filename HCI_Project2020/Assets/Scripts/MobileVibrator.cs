@@ -11,7 +11,7 @@ public static class MobileVibrator
     public static AndroidJavaObject currentActivity;
     public static AndroidJavaObject vibrator;
 #endif
-    
+
     public static void Vibrate(long milliseconds)
     {
         if (IsAndroid())
@@ -19,20 +19,21 @@ public static class MobileVibrator
         else
             Handheld.Vibrate();
     }
-    
+
     public static void Vibrate(VibrationAmount vibrationAmount)
     {
         if (IsAndroid())
-            vibrator.Call("vibrate", (int)vibrationAmount);
+            vibrator.Call("vibrate", (int) vibrationAmount);
         else
             Handheld.Vibrate();
     }
+
     public static void Cancel()
     {
         if (IsAndroid())
             vibrator.Call("cancel");
     }
-    
+
     public static bool IsAndroid()
     {
 #if UNITY_ANDROID && !UNITY_EDITOR
@@ -42,4 +43,3 @@ public static class MobileVibrator
 #endif
     }
 }
-
