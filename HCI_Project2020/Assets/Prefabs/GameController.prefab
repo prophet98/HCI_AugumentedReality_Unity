@@ -259,6 +259,7 @@ MonoBehaviour:
   - {fileID: 3450605295408650010, guid: 62cd95f0e83101b45a70779d3cd34af8, type: 3}
   - {fileID: 6791415248179091277, guid: cb1894706bf93d84db24cb3279a576e3, type: 3}
   - {fileID: 5198473804328055842, guid: f6c79293104a1db4aaee455c6caa8abd, type: 3}
+  - {fileID: 5688386470548615961, guid: 29f0dfa7fc3ed3147920579462cf614a, type: 3}
   zephyrGlassesElements:
   - {fileID: 8360392690098488080, guid: b5709906a31065e438e961ae434d74eb, type: 3}
   - {fileID: 6438731013846688266, guid: 95a28a4c049368b4783360a4e6238af7, type: 3}
