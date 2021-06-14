@@ -33,6 +33,11 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        Play(Sound.Names.MainMenuTheme);
+    }
+
     public void Play(Sound.Names soundName)
     {
         var s = Array.Find(sounds,
@@ -59,8 +64,7 @@ public class SoundManager : MonoBehaviour
                 }
             }
         }
-
-
+        
         if (s.isRandom)
         {
             // s.source.volume = s.volume + Random.Range(0, s.volumeVariance);
@@ -103,6 +107,5 @@ public class SoundManager : MonoBehaviour
         }
 
         StopSound(sound.name);
-        yield break;
     }
 }

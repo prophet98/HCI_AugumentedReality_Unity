@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: -1631628248, guid: bab6fa851cf5a1a4bba3cec5f191cb8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTrackableName: ModTracker
+  mTrackableName: PersonTracker
   mInitializedInEditor: 1
   mDataSetPath: Vuforia/HCI_Database.xml
   mAspectRatio: 1.5752715
@@ -679,7 +679,7 @@ MonoBehaviour:
   m_Script: {fileID: -1631628248, guid: bab6fa851cf5a1a4bba3cec5f191cb8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTrackableName: PersonTracker
+  mTrackableName: ModTracker
   mInitializedInEditor: 1
   mDataSetPath: Vuforia/HCI_Database.xml
   mAspectRatio: 1.5752715
