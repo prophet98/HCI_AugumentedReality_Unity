@@ -40,10 +40,22 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3265025042865231629, guid: fb429447fcfb2554eae2110a058d0392,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1673008030397735094, guid: 471183f47db9d7443ac18a1bd7d66bc1,
+        type: 3}
+    - target: {fileID: 3265025042865231629, guid: fb429447fcfb2554eae2110a058d0392,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: -4630250191715267126, guid: 471183f47db9d7443ac18a1bd7d66bc1,
+        type: 3}
     - target: {fileID: 3913432957701011160, guid: fb429447fcfb2554eae2110a058d0392,
         type: 3}
       propertyPath: m_Name
-      value: Dice01
+      value: FigureDice
       objectReference: {fileID: 0}
     - target: {fileID: 3913432957701011160, guid: fb429447fcfb2554eae2110a058d0392,
         type: 3}
